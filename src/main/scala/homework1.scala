@@ -1,28 +1,53 @@
+import scala.collection.immutable.HashSet
 
 object homework1:
-  private type typ = String | Int | Boolean
-  enum expressions:
-    case Value(input: typ)
-    case Variable(name: String)
-    case Insert(name: expressions, op1: expressions, op2: expressions)
-    case Assign(name: expressions, op: expressions)
-    case Print(op: String)
-    case Check(name: String, value: expressions)
-    private val map: Map[String,Set[typ]] = Map()
+  enum expressions {
+    case Value(input: String)
+    case Delete(input: expressions)
+    case Add(input: expressions)
+    case Union(input: HashSet[String])
+    case Intersection(input: HashSet[String])
+    case Difference(input: HashSet[String])
+    case SymDifference(input: HashSet[String])
 
-    def eval: typ | Set[typ] =
+    def eval: String = {
       this match {
-        case Variable(op) => op
-        case Value(op) => op
-        case Insert(op1, op2, op3) => Set(op1.eval, op2.eval, op3.eval)
-        case Assign(op1, op2) => map(op1.eval).union(op2.eval)
-        case Print(op1) => map(op1) //!! Temporary.. Delete later
-        case Check(op1, op2) => map.exists(op1).contains(op2)
+        case Value(input) => input
       }
+    }
+
+    def select_set(set: HashSet[String]) : HashSet[String] = {
+      this match {
+        case Add(op) => set + op.eval
+        case Delete(op) => set - op.eval
+        case Union(set1) => set.union(set1)
+        case Intersection(set1) => set.intersect(set1)
+        case Difference(set1) => set.diff(set1)
+        case SymDifference(set1) => set ++ set1
+      }
+    }
+
+    private def SymDifferenceFunc(set1: HashSet[String], set2: HashSet[String]): HashSet[String] = {
+      set1.foreach(x =>
+        if (!set2.contains(x)) {
+      })
+
+      HashSet("1")
+
+    }
+  }
+
 
   @main def test(): Unit =
     import expressions.*
-    Assign(Variable("someSetName"), Insert(Variable("var"), Value(1), Value("somestring")))
+    val set1 = HashSet("1", "2")
+    val set2 = HashSet("3", "4")
+    val set_11 = Add(Value("5")).select_set(set1)
+    val set_22 = Add(Value("5")).select_set(set2)
+    val union = Union(set_11).select_set(set_22)
+    val intersect = Intersection(set_11).select_set(set_22)
+    val diff = Difference(set_11).select_set(set_22)
+    val sym_diff = SymDifference(set_11).select_set(set_22)
 
-    println(Print("someSetName"))
+    println(sym_diff)
 
