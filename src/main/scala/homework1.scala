@@ -1,53 +1,137 @@
-import scala.collection.immutable.HashSet
+import scala.collection.mutable
 
 object homework1:
+  private val map: mutable.Map[String, Set[String]] = mutable.Map()
+
   enum expressions {
     case Value(input: String)
+    case Name(input: String)
     case Delete(input: expressions)
-    case Add(input: expressions)
-    case Union(input: HashSet[String])
-    case Intersection(input: HashSet[String])
-    case Difference(input: HashSet[String])
-    case SymDifference(input: HashSet[String])
+    case Insert(input: expressions)
+    case Union(input: Set[String])
+    case Intersection(input: Set[String])
+    case Difference(input: Set[String])
+    case SymDifference(input: Set[String])
+    case Cartesian(input1: Set[String], input2: Set[String])
+    case Assign(op1: expressions, op2: expressions)
+    case Print(op1: expressions)
+    case Check(op1: expressions, op2: expressions)
+
+    def look_up: Boolean = {
+      this match {
+        case Check(op1, op2) => Look_Up_Helper(op1, op2)
+        case _ => false
+      }
+    }
 
     def eval: String = {
       this match {
         case Value(input) => input
+        case Name(input) => input
+        case _ => "Unknown"
       }
     }
 
-    def select_set(set: HashSet[String]) : HashSet[String] = {
+    def select_set(set: Set[String]) : Set[String] = {
       this match {
-        case Add(op) => set + op.eval
+        case Insert(op) => set + op.eval
         case Delete(op) => set - op.eval
         case Union(set1) => set.union(set1)
         case Intersection(set1) => set.intersect(set1)
         case Difference(set1) => set.diff(set1)
-        case SymDifference(set1) => set ++ set1
+        case SymDifference(set1) => SymDifferenceFunc(set, set1)
+        case _ => Set()
       }
     }
 
-    private def SymDifferenceFunc(set1: HashSet[String], set2: HashSet[String]): HashSet[String] = {
+    def eval_map(): Unit =  {
+      this match {
+        case Assign(op1, op2) => AddMap(op1, op2)
+        case _ =>
+      }
+    }
+
+
+    def print: Set[String] = {
+      this match {
+        case Print(op1) => map(op1.eval)
+        case _ => Set()
+      }
+    }
+
+    def find: Set[(String, String)] = {
+      this match {
+        case Cartesian(op1, op2) => CartFunc(op1, op2)
+        case _ => Set()
+      }
+    }
+
+    private def SymDifferenceFunc(set1: Set[String], set2: Set[String]): Set[String] = {
+      val set: mutable.Set[String] = mutable.Set()
       set1.foreach(x =>
         if (!set2.contains(x)) {
+          set.add(x)
+        }
+      )
+
+      set2.foreach(x =>
+        if (!set1.contains(x)) {
+          set.add(x)
+        }
+      )
+
+      set.toSet
+    }
+
+    private def CartFunc(set1: Set[String], set2: Set[String]): Set[(String, String)] = {
+      val set: mutable.Set[(String, String)] = mutable.Set()
+      set1.foreach(i => {
+        set2.foreach(j => {
+          set.add((i, j))
+        })
       })
 
-      HashSet("1")
+      set.toSet
+    }
 
+    private def AddMap(op1: expressions, op2: expressions): Unit = {
+      val temp = op1.eval
+      if (!map.contains(temp))
+        map(temp) = Set()
+
+      map(temp) = op2.select_set(map(temp))
+    }
+
+    private def Look_Up_Helper(op1: expressions, op2: expressions): Boolean = {
+      val op1_val = op1.eval
+
+      if (map.contains(op1_val)) {
+        val temp = map(op1_val)
+        if (temp.contains(op2.eval)) {
+          return true
+        }
+      }
+      false
     }
   }
 
 
   @main def test(): Unit =
     import expressions.*
-    val set1 = HashSet("1", "2")
-    val set2 = HashSet("3", "4")
-    val set_11 = Add(Value("5")).select_set(set1)
-    val set_22 = Add(Value("5")).select_set(set2)
+    /*val set1 = Set("1", "2")
+    val set2 = Set("3", "4")
+    val set_11 = Insert(Value("5")).select_set(set1)
+    val set_22 = Insert(Value("5")).select_set(set2)
     val union = Union(set_11).select_set(set_22)
     val intersect = Intersection(set_11).select_set(set_22)
     val diff = Difference(set_11).select_set(set_22)
     val sym_diff = SymDifference(set_11).select_set(set_22)
+    val cart = Cartesian(set_11, set_22).find*/
 
-    println(sym_diff)
+    Assign(Name("hm"), Insert(Value("5"))).eval_map()
+    Assign(Name("hm"), Insert(Value("3"))).eval_map()
+    println(Print(Name("hm")).print)
+    Assign(Name("hm"), Delete(Value("2"))).eval_map()
+    println(Print(Name("hm")).print)
+    println(Check(Name("hm"), Value("3")).look_up)
 
