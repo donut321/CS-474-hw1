@@ -2,6 +2,7 @@ import scala.collection.mutable
 
 object homework1:
   private val map: mutable.Map[String, Set[String]] = mutable.Map()
+  private val macros: mutable.Map[String, expressions] = mutable.Map()
 
   enum expressions {
     case Value(input: String)
@@ -16,6 +17,10 @@ object homework1:
     case Assign(op1: expressions, op2: expressions)
     case Print(op1: expressions)
     case Check(op1: expressions, op2: expressions)
+    case Scope(op: expressions)
+    case Macro(op1: expressions, op2: expressions)
+    case RunMacro(op: expressions)
+
 
     def look_up: Boolean = {
       this match {
@@ -40,6 +45,8 @@ object homework1:
         case Intersection(set1) => set.intersect(set1)
         case Difference(set1) => set.diff(set1)
         case SymDifference(set1) => SymDifferenceFunc(set, set1)
+        case Scope(op2) => set + op2.eval
+        case Print(op1) => map(op1.eval)
         case _ => Set()
       }
     }
@@ -47,15 +54,9 @@ object homework1:
     def eval_map(): Unit =  {
       this match {
         case Assign(op1, op2) => AddMap(op1, op2)
+        case Macro(op1, op2) => MacroMap(op1, op2)
+        case RunMacro(op1) => RunMacros(op1)
         case _ =>
-      }
-    }
-
-
-    def print: Set[String] = {
-      this match {
-        case Print(op1) => map(op1.eval)
-        case _ => Set()
       }
     }
 
@@ -102,6 +103,25 @@ object homework1:
       map(temp) = op2.select_set(map(temp))
     }
 
+    private def MacroMap(op1: expressions, op2: expressions): Unit = {
+      val temp = op1.eval
+
+      if (!macros.contains(temp))
+        macros(temp) = null
+
+      macros(temp) = op2
+    }
+
+    private def RunMacros(op: expressions): Unit = {
+      val temp = op.eval
+
+      if (!macros.contains(temp)) return Set()
+
+      val command = macros(temp)
+      val exp = command.select_set(map(temp))
+      map(temp) = exp
+    }
+
     private def Look_Up_Helper(op1: expressions, op2: expressions): Boolean = {
       val op1_val = op1.eval
 
@@ -130,8 +150,8 @@ object homework1:
 
     Assign(Name("hm"), Insert(Value("5"))).eval_map()
     Assign(Name("hm"), Insert(Value("3"))).eval_map()
-    println(Print(Name("hm")).print)
+    println(Print(Name("hm")).select_set(null))
     Assign(Name("hm"), Delete(Value("2"))).eval_map()
-    println(Print(Name("hm")).print)
+    println(Print(Name("hm")).select_set(null))
     println(Check(Name("hm"), Value("3")).look_up)
 
