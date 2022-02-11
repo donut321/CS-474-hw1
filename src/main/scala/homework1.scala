@@ -5,7 +5,7 @@
 import scala.collection.mutable
 
 object homework1:
-  // Global maps to store the macros and the permenant map
+  // Global maps to store the macros and the permanent map
   private val map: mutable.Map[Any, Set[Any]] = mutable.Map()
   private val macros: mutable.Map[Any, expressions] = mutable.Map()
 
@@ -16,7 +16,7 @@ object homework1:
 
     // Define the expressions
     case Value(input: Any)
-    case Name(input: Any)
+    case Name(input: String)
     case Delete(input: expressions)
     case Clear()
     case Insert(input: expressions)
@@ -31,7 +31,6 @@ object homework1:
     case Scope(op1: expressions, op2: expressions)
     case Macro(op1: expressions, op2: expressions)
     case RunMacro(op: expressions)
-    case GetSet(name: expressions)
 
     // This will return if the value is in the map or not
     // If none, return false
@@ -193,7 +192,7 @@ object homework1:
       command.select_set(map(temp))
     }
 
-    // This is a helper function for the check expression. If the key or value dont exist, return false
+    // This is a helper function for the check expression. If the key or value don't exist, return false
     // Else return true
     private def Look_Up_Helper(op1: expressions, op2: expressions): Boolean = {
       val op1_val = op1.eval
@@ -206,7 +205,7 @@ object homework1:
         }
       }
 
-      // If one of these conditions dont satisfy, return false
+      // If one of these conditions don't satisfy, return false
       false
     }
   }

@@ -1,3 +1,51 @@
 
 S
 #.idea/libraries/scala_sdk_3_1_1.xml,5/1/519e6eab594f51d0a35d5bb9fe363e528116e209
+9
+	.dcignore,7/7/7791000a9a93019a87d67e0b676c86447ba29c67
+R
+".idea/modules/Homework 1-build.iml,7/e/7e961b6ff2bd5e7319bcf565d44d9296b7dc10a6
+L
+.idea/modules/Homework 1.iml,b/d/bdfb7795c4f97177f24aa25b93d89f0229ce3871
+H
+project/build.properties,8/6/86c7bed3e63c403cb8322acb81cfb01cb52ebd23
+r
+B.idea/libraries/sbt__org_scala_lang_scala3_library_3_3_1_1_jar.xml,5/7/570bb59fe16111e0f6953f054fb3ca729d2acacb
+p
+@.idea/libraries/sbt__org_scala_lang_scala_library_2_13_6_jar.xml,4/2/4237558bff2e979dd3238fe7bfefece54bc9a4fa
+u
+E.idea/libraries/sbt__org_scala_lang_modules_scala_xml_3_2_0_0_jar.xml,f/e/fe2c8faad8789fe8b5eae486d25441ea62af1611
+x
+H.idea/libraries/sbt__org_scalatest_scalatest_featurespec_3_3_2_9_jar.xml,9/8/98c2c28c807dd982f1a3482a59024a38d3a6a72f
+=
+.bsp/sbt.json,2/d/2d1c848107550a7cf7f00ddb405f3bba740cc5b5
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_diagrams_3_3_2_9_jar.xml,7/a/7a2b8886e5c422de5ede3208c64eede8d49d36da
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_freespec_3_3_2_9_jar.xml,8/f/8f27c0c5b9bcaf0a316579fc36b458ea81dde30f
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_flatspec_3_3_2_9_jar.xml,9/7/972646ff732bea89efc0d915d9a27cf5e8d67e4d
+l
+<.idea/libraries/sbt__org_scalatest_scalatest_3_3_2_9_jar.xml,6/e/6ed4cb1be5f7e933a7e1e0bcbdc0d5506feff142
+l
+<.idea/libraries/sbt__org_scalactic_scalactic_3_3_2_9_jar.xml,d/6/d6ca0efbceaeb59065d62ad5291129464beff058
+q
+A.idea/libraries/sbt__org_scalatest_scalatest_core_3_3_2_9_jar.xml,0/9/09e5697026a7b3b947c06a79bd2aeeb3440c0886
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_compatible_3_2_9_jar.xml,4/d/4d631016b556a918bf07f0b3b1e17b0f5d1632d9
+t
+D.idea/libraries/sbt__org_scalatest_scalatest_refspec_3_3_2_9_jar.xml,e/1/e1772bd76a673a6d0fc1e01f9202679173bd0208
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_propspec_3_3_2_9_jar.xml,9/c/9c8131a7744d148b03de2093b0a3fa829609a56f
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_wordspec_3_3_2_9_jar.xml,e/b/ebf08d5c9676cec7f610ec5bacbfbe69a7898ca9
+{
+K.idea/libraries/sbt__org_scalatest_scalatest_shouldmatchers_3_3_2_9_jar.xml,a/6/a6036f0f90307f821b3c581e15301d3f66df4d57
+u
+E.idea/libraries/sbt__org_scalatest_scalatest_funsuite_3_3_2_9_jar.xml,4/6/460a30eec46c0c93ca593d7e67845b790cc457f6
+t
+D.idea/libraries/sbt__org_scalatest_scalatest_funspec_3_3_2_9_jar.xml,c/c/cca965031ca15a73e0c781efa48224b1132d3ac9
+y
+I.idea/libraries/sbt__org_scalatest_scalatest_mustmatchers_3_3_2_9_jar.xml,6/e/6e7537f798ca1632bff951dd4ab56ed02084d1a6
+z
+J.idea/libraries/sbt__org_scalatest_scalatest_matchers_core_3_3_2_9_jar.xml,b/e/be92add72225409f91c1a999d20e6b94c553e11b
