@@ -214,41 +214,4 @@ object homework1:
   @main def test(): Unit =
     import expressions.*
 
-    // Ignore these. They're just to test while coding.
-    /*
-    Assign(Name("set1"), Insert(Value("1"))).eval_map
-    Assign(Name("set1"), Insert(Value("2"))).eval_map
-    Assign(Name("set1"), Insert(Value("3"))).eval_map
-    Assign(Name("set1"), Insert(Value("4"))).eval_map
-    Assign(Name("set1"), Insert(Value("5"))).eval_map
-    Assign(Name("set1"), Insert(Value("6"))).eval_map
-    Assign(Name("set1"), Insert(Value("7"))).eval_map
-    Assign(Name("set2"), Insert(Value("8"))).eval_map
-    Assign(Name("set2"), Insert(Value("1"))).eval_map
-    Assign(Name("set2"), Insert(Value("2"))).eval_map
-    Assign(Name("set2"), Insert(Value("10"))).eval_map
-    Assign(Name("set2"), Insert(Value("3"))).eval_map
-    Assign(Name("set2"), Insert(Value("5"))).eval_map
-    Assign(Name("set2"), Insert(Value("9"))).eval_map
-    Clear().eval_map
-    Assign(Name("set1"), Insert(Value(1))).eval_map
-    Assign(Name("set1"), Insert(Value(2))).eval_map
-    Assign(Name("set1"), Insert(Value(3))).eval_map
-    Assign(Name("set2"), Insert(Value(4))).eval_map
-    Assign(Name("set2"), Insert(Value(5))).eval_map
-    Assign(Name("set2"), Insert(Value(6))).eval_map
-    //println(Check(Name("set1"), Value("2")).look_up)
-    println(Check(Name("set1"), Value(1)).look_up)
-    println(Macro(Name("set1"), Delete(Value(1))).eval_macro)
-    println(Print(Name("set1")).eval_set)
-    Assign(Name("set1"), RunMacro(Name("set1"))).eval_map
-    println(Check(Name("set1"), Value(1)).look_up)
-    println(Macro(Name("set1"), Delete(Value(2))).eval_macro)
-    Assign(Name("set1"), RunMacro(Name("set1"))).eval_map
-    println(Print(Name("set1")).eval_set)
-    println(Check(Name("set1"), Value(2)).look_up)*/
-
-    /*println(Cartesian(GetSet(Name("set1")).get_set, GetSet(Name("set2")).get_set).find)
-    val map = Scope(Name("hm"), Insert(Value("4"))).scope
-    println(map)*/
-
+    // Write your code here:

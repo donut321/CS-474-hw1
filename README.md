@@ -49,3 +49,6 @@ Macro has a map too. But instead of holding sets, it holds expressions. So when 
 The key will be assigned to null after that. Union, Intersection, and Difference use Scala functions for sets. SymDifference loops through set1 and adds all its values to a new set. Then does the same for the second set. Then returns the set.
 Cartesian will loop through the first set and at each iteration, it will loop inside the second set and make a pair and push it to a set that consists of (value from set1, value from set 2)
 
+# How to use the language
+In main, you can type your commands there and run it. Or you could also
+type bst run to run the tests. To find an example on how to write your code, see "homework1Test", where it provides you with an example of each expression.

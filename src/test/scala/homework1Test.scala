@@ -10,7 +10,7 @@ class homework1Test extends AnyFlatSpec with Matchers {
   behavior of "my first language for set theory operations"
   import expressions.*
 
-  // This is testing for the Assign, Insert, Value, Name, Detelet, and Check expressions
+  // This is testing for the Assign, Insert, Value, Name, Delete, and Check expressions
   it should "Create a map that permanently adds or deletes sets as values and an identifier key string as the key." +
     "It will check if a key or value exists in the map and return true or false respectively." in {
     Assign(Name("set1"), Insert(Value("5"))).eval_map
